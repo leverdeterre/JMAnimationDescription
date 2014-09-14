@@ -13,11 +13,14 @@ FOUNDATION_EXPORT NSString * const JMAnimationDidFinishNotification;
 
 @interface JMAnimationDescription : NSObject
 
+@property (assign, nonatomic) NSInteger repeatCount;
+
 - (JMAnimationDescription *)initWithAnimationBlock:(JMAnimationBlock)block duration:(NSTimeInterval)duration;
 
 - (void)thenExecuteAnimationBlock:(JMAnimationBlock)block duration:(NSTimeInterval)duration;
 - (void)thenExecuteAnimationBlock:(JMAnimationBlock)block afterDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration;
 
 - (void)startAnimation;
+- (void)startReverseAnimation;
 
 @end

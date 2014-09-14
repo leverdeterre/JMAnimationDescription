@@ -25,25 +25,29 @@
     
     self.animation = [[JMAnimationDescription alloc] initWithAnimationBlock:^{
         self.animatedView.frame = CGRectMake(10.0f, 10.0f, 100.0f, 100.0f);
-    } duration:0.0];
+    } duration:1.0];
     
     [self.animation thenExecuteAnimationBlock:^{
         self.animatedView.frame = CGRectMake(10.0f, 100.0f, 100.0f, 100.0f);
-    } duration:1.0];
+    } duration:2.0];
     
     [self.animation thenExecuteAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(250.0f, 300.0f, 100.0f, 100.0f);
-    } duration:1.0];
+        self.animatedView.frame = CGRectMake(10.0f, 300.0f, 100.0f, 100.0f);
+    } duration:2.0];
     
     [self.animation thenExecuteAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(10.0f, 10.0f, 100.0f, 100.0f);
-    } duration:1.0];
+        self.animatedView.frame = CGRectMake(220.0f, 20.0f, 100.0f, 100.0f);
+    } afterDelay:2.0 duration:1.0];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (IBAction)startAnimation:(id)sender
 {
-    [super viewDidAppear:animated];
     [self.animation startAnimation];
+}
+
+- (IBAction)startReverseAnimation:(id)sender
+{
+    [self.animation startReverseAnimation];
 }
 
 @end
