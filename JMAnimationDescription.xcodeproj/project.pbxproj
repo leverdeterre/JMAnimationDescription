@@ -21,6 +21,8 @@
 		C28B397319C5D7260084803E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28B395519C5D7260084803E /* UIKit.framework */; };
 		C28B397B19C5D7260084803E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C28B397919C5D7260084803E /* InfoPlist.strings */; };
 		C28B397D19C5D7260084803E /* JMAnimationDescriptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C28B397C19C5D7260084803E /* JMAnimationDescriptionTests.m */; };
+		C28B398B19C5D81F0084803E /* JMAnimationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = C28B398A19C5D81F0084803E /* JMAnimationDescription.m */; };
+		C28B398E19C5D91E0084803E /* JMAnimationStep.m in Sources */ = {isa = PBXBuildFile; fileRef = C28B398D19C5D91E0084803E /* JMAnimationStep.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		C28B397819C5D7260084803E /* JMAnimationDescriptionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JMAnimationDescriptionTests-Info.plist"; sourceTree = "<group>"; };
 		C28B397A19C5D7260084803E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C28B397C19C5D7260084803E /* JMAnimationDescriptionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMAnimationDescriptionTests.m; sourceTree = "<group>"; };
+		C28B398919C5D81F0084803E /* JMAnimationDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAnimationDescription.h; sourceTree = "<group>"; };
+		C28B398A19C5D81F0084803E /* JMAnimationDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAnimationDescription.m; sourceTree = "<group>"; };
+		C28B398C19C5D91E0084803E /* JMAnimationStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAnimationStep.h; sourceTree = "<group>"; };
+		C28B398D19C5D91E0084803E /* JMAnimationStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAnimationStep.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,10 @@
 				C28B396319C5D7260084803E /* Main.storyboard */,
 				C28B396619C5D7260084803E /* JMViewController.h */,
 				C28B396719C5D7260084803E /* JMViewController.m */,
+				C28B398919C5D81F0084803E /* JMAnimationDescription.h */,
+				C28B398A19C5D81F0084803E /* JMAnimationDescription.m */,
+				C28B398C19C5D91E0084803E /* JMAnimationStep.h */,
+				C28B398D19C5D91E0084803E /* JMAnimationStep.m */,
 				C28B396919C5D7260084803E /* Images.xcassets */,
 				C28B395819C5D7260084803E /* Supporting Files */,
 			);
@@ -253,6 +263,8 @@
 				C28B395E19C5D7260084803E /* main.m in Sources */,
 				C28B396819C5D7260084803E /* JMViewController.m in Sources */,
 				C28B396219C5D7260084803E /* JMAppDelegate.m in Sources */,
+				C28B398E19C5D91E0084803E /* JMAnimationStep.m in Sources */,
+				C28B398B19C5D81F0084803E /* JMAnimationDescription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
