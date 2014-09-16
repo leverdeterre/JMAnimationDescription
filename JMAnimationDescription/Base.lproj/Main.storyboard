@@ -17,9 +17,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blK-uy-lb6">
-                                <rect key="frame" x="0.0" y="57" width="93" height="205"/>
+                                <rect key="frame" x="20" y="40" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.26874267369999999" blue="0.2549723324" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqE-a4-B7f">
+                                <rect key="frame" x="90" y="140" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.27843138579999999" green="0.80392163989999998" blue="0.78823536630000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-Ub-2wE">
                                 <rect key="frame" x="109" y="446" width="102" height="30"/>
@@ -48,6 +53,7 @@ Ano</string>
                     </view>
                     <connections>
                         <outlet property="animatedView" destination="blK-uy-lb6" id="Oal-fl-flW"/>
+                        <outlet property="animatedViewBlue" destination="HqE-a4-B7f" id="cWi-n8-XWC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -11,6 +11,8 @@
 
 @interface JMViewController ()
 @property (weak, nonatomic) IBOutlet UIView *animatedView;
+@property (weak, nonatomic) IBOutlet UIView *animatedViewBlue;
+
 @property (strong, nonatomic)  JMAnimationDescription *animation;
 @end
 
@@ -19,25 +21,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 
-    self.animatedView.backgroundColor = [UIColor redColor];
-    
+    // Do any additional setup after loading the view, typically from a nib.
     self.animation = [[JMAnimationDescription alloc] initWithAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(10.0f, 10.0f, 100.0f, 100.0f);
+        self.animatedView.frame = CGRectMake(20.0f, 40.0f, 100.0f, 100.0f);
+        self.animatedViewBlue.frame = CGRectMake(90.0f, 140.0f, 30.0f, 30.0f);
+
     } duration:1.0];
     
     [self.animation thenExecuteAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(10.0f, 100.0f, 100.0f, 100.0f);
+        self.animatedView.frame = CGRectMake(20.0f, CGRectGetMaxY([UIScreen mainScreen].bounds)-140.0f, 100.0f, 100.0f);
+        self.animatedViewBlue.frame = CGRectMake(90.0f, 160.0f, 30.0f, 30.0f);
+
     } duration:2.0];
     
     [self.animation thenExecuteAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(10.0f, 300.0f, 100.0f, 100.0f);
+        self.animatedView.frame = CGRectMake(CGRectGetMaxX([UIScreen mainScreen].bounds)-140.0f, CGRectGetMaxY([UIScreen mainScreen].bounds)-140.0f, 100.0f, 100.0f);
+        self.animatedViewBlue.frame = CGRectMake(200.0f, 160.0f, 30.0f, 30.0f);
+
     } duration:2.0];
     
     [self.animation thenExecuteAnimationBlock:^{
-        self.animatedView.frame = CGRectMake(220.0f, 20.0f, 100.0f, 100.0f);
-    } afterDelay:2.0 duration:1.0];
+        self.animatedView.frame = CGRectMake(CGRectGetMaxX([UIScreen mainScreen].bounds)-140.0f, 40.0f, 100.0f, 100.0f);
+        self.animatedViewBlue.frame = CGRectMake(90.0f, 160.0f, 30.0f, 30.0f);
+
+    } afterDelay:1.0 duration:1.0];
+    
+    [self.animation thenExecuteAnimationBlock:^{
+        self.animatedView.frame = CGRectMake(20.0f, 40.0f, 100.0f, 100.0f);
+        self.animatedViewBlue.frame = CGRectMake(20.0f, 140.0f, 30.0f, 30.0f);
+
+    } duration:1.0];
 }
 
 - (IBAction)startAnimation:(id)sender

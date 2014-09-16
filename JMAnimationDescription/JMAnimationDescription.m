@@ -14,10 +14,16 @@ typedef NS_ENUM(NSUInteger, JMAnimationOrder) {
     JMAnimationOrderReverse
 };
 
+typedef NS_ENUM(NSUInteger, JMAnimationState) {
+    JMAnimationStateInNone,
+    JMAnimationStateInProgress
+};
+
 @interface JMAnimationDescription()
 @property (strong, nonatomic) NSMutableArray *steps;
 @property (assign, nonatomic) NSInteger currentIndex;
 @property (assign, nonatomic) JMAnimationOrder order;
+@property (assign, nonatomic) JMAnimationState state;
 @end
 
 @implementation JMAnimationDescription
@@ -27,6 +33,7 @@ typedef NS_ENUM(NSUInteger, JMAnimationOrder) {
     self = [super init];
     if (self) {
         self.order = JMAnimationOrderNormal;
+        self.state = JMAnimationStateInNone;
         self.repeatCount = 1;
     }
     return self;
@@ -57,7 +64,9 @@ typedef NS_ENUM(NSUInteger, JMAnimationOrder) {
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.order = JMAnimationOrderNormal;
-        [self continueAnimation];
+        if (self.state == JMAnimationStateInNone) {
+            [self continueAnimation];
+        }
     });
 }
 
@@ -66,21 +75,26 @@ typedef NS_ENUM(NSUInteger, JMAnimationOrder) {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.order = JMAnimationOrderReverse;
         self.repeatCount = 1;
-        [self continueAnimation];
+        if (self.state == JMAnimationStateInNone) {
+            [self continueAnimation];
+        }
     });
 }
 
 - (void)continueAnimation
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.state = JMAnimationStateInProgress;
+
         if ([self computeNextIndex] != NSNotFound) {
             JMAnimationStep *step = [self currentStep];
-            [UIView animateWithDuration:step.duration delay:step.delay options:0 animations:^{
+            [UIView animateWithDuration:step.duration delay:step.delay options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                 step.block();
             } completion:^(BOOL finished) {
                 [self continueAnimation];
             }];
         } else {
+            self.state = JMAnimationStateInNone;
             [[NSNotificationCenter defaultCenter] postNotificationName:JMAnimationDidFinishNotification object:nil];
         }
     });
