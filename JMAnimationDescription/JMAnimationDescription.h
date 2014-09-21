@@ -22,5 +22,6 @@ FOUNDATION_EXPORT NSString * const JMAnimationDidFinishNotification;
 
 - (void)startAnimation;
 - (void)startReverseAnimation;
+- (void)stopAnimation;
 
 @end

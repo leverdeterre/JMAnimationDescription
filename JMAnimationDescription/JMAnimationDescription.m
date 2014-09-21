@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, JMAnimationOrder) {
 
 typedef NS_ENUM(NSUInteger, JMAnimationState) {
     JMAnimationStateInNone,
+    JMAnimationStateCancelInProgress,
     JMAnimationStateInProgress
 };
 
@@ -81,6 +82,13 @@ typedef NS_ENUM(NSUInteger, JMAnimationState) {
     });
 }
 
+- (void)stopAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.state = JMAnimationStateCancelInProgress;
+    });
+}
+
 - (void)continueAnimation
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -91,7 +99,11 @@ typedef NS_ENUM(NSUInteger, JMAnimationState) {
             [UIView animateWithDuration:step.duration delay:step.delay options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                 step.block();
             } completion:^(BOOL finished) {
-                [self continueAnimation];
+                if (self.state == JMAnimationStateCancelInProgress){
+                    self.state = JMAnimationStateInNone;
+                } else {
+                    [self continueAnimation];
+                }
             }];
         } else {
             self.state = JMAnimationStateInNone;
